@@ -8,39 +8,39 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/students")
-public class StudentController {   // ✅ Capital C to match file name
+public class StudentController {  
 
     private final StudentService service;
 
-    public StudentController(StudentService service) {  // ✅ Constructor name fixed
+    public StudentController(StudentService service) {  
         this.service = service;
     }
 
-    // POST /students -> add student
+    // POST /students - add student
     @PostMapping
     public Student addStudent(@RequestBody Student s) {
         return service.addStudent(s);
     }
 
-    // GET /students -> get all students
+    // GET /students - get all students
     @GetMapping
     public List<Student> getAllStudents() {
         return service.getAllStudents();
     }
 
-    // GET /students/{id} -> get one student
+    // GET /students/{id} - get one student
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable int id) {
         return service.getStudentById(id);
     }
 
-    // PUT /students/{id} -> update student
+    // PUT /students/{id} - update student
     @PutMapping("/{id}")
     public Student updateStudent(@PathVariable int id, @RequestBody Student s) {
         return service.updateStudent(id, s);
     }
 
-    // DELETE /students/{id} -> delete student
+    // DELETE /students/{id} - delete student
     @DeleteMapping("/{id}")
     public String deleteStudent(@PathVariable int id) {
         boolean deleted = service.deleteStudent(id);
